@@ -63,7 +63,8 @@ int main(int argc, char* argv[])
                       nv21_image
                      );
 
-    const string out_filename(filename + ".nv21");
+    const string out_filename(filename.substr(0, filename.size() - 3) + "nv21.yuv");
+    cout << "Creating output file: " << out_filename << endl;
     fstream out_file(out_filename, ios::binary | ios::out);
 
     // Goto the beginning of the file
@@ -73,7 +74,7 @@ int main(int argc, char* argv[])
         out_file.close();
     }
     else {
-        cout << "Error: Cannot write file " << argv[1] << ".nv21" << endl;
+        cout << "Error: Cannot write file " << out_filename << endl;
         return -1;
     }
 
